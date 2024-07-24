@@ -25,10 +25,3 @@ function analyzeSentence(sentence) {
     };
   }
   
-  const sentence = "This is a sample sentence.";
-  const results = analyzeSentence(sentence);
-  
-  console.log("Sentence Length:", results.sentenceLength); // Output: 27
-  console.log("Word Count:", results.wordCount);         // Output: 6
-  console.log("Vowel Count:", results.vowelCount);       // Output: 5
-  

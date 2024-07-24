@@ -1,0 +1,19 @@
+function insertionSort(arr) {
+    for (let i = 1; i < arr.length; i++) {
+      let current = arr[i];
+      let j = i - 1;
+  
+      // Shift elements of the sorted portion (arr[0] to arr[j]) that are greater than the current element
+      while (j >= 0 && arr[j] > current) {
+        arr[j + 1] = arr[j];
+        j--;
+      }
+  
+      // Insert the current element at its correct position
+      arr[j + 1] = current;
+    }
+  
+    return arr;
+  }
+  
+  
