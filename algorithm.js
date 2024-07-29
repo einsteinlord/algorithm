@@ -1,27 +1,49 @@
 function analyzeSentence(sentence) {
-    let sentenceLength = 0;
-    let wordCount = 0;
-    let vowelCount = 0;
-    let isPreviousSpace = false;
+  const vowelsList = 'aeiouAEIOU';
+  let length = 0;
+  let vowels = 0;
+  let words = 0;
+
   
-    for (const char of sentence) {
-      sentenceLength++;
+  const trimmedSentence = sentence.trim();
+
   
-      if (char === ' ' && !isPreviousSpace) {
-        wordCount++;
+  let inWord = false;
+
+  for (let i = 0; i < trimmedSentence.length; i++) {
+      let char = trimmedSentence[i];
+
+      
+      if (char === '.' && i === trimmedSentence.length - 1) {
+          break;
       }
-  
-      isPreviousSpace = char === ' ';
-  
-      if (/[aeiouAEIOU]/.test(char)) {
-        vowelCount++;
+
+     
+      if (char !== ' ') {
+          length++;
       }
-    }
-  
-    return {
-      sentenceLength,
-      wordCount,
-      vowelCount,
-    };
+      if (vowelsList.includes(char)) {
+          vowels++;
+      }
+
+      if (char === ' ') {
+          inWord = false;
+      } else if (!inWord) {
+          words++;
+          inWord = true;
+      }
   }
-  
+
+
+  if (trimmedSentence.length > 0 && trimmedSentence[trimmedSentence.length - 1] !== '.') {
+      if (inWord) {
+          words++;
+      }
+  }
+
+  console.log("Length of the sentence:", length);
+  console.log("Number of words in the sentence:", words);
+  console.log("Number of vowels in the sentence:", vowels);
+}
+
+analyzeSentence("This is an example sentence.");
